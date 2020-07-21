@@ -1,16 +1,16 @@
 <html>
     <head>
-        <title>yamamoto no blog</title>
+        <title>山本の日記</title>
     </head>
     <body>
         <div>
-            <h1><a href="/">yamamoto no blog</a></h1>
-        </div>
-
+            <h1><a href="/">山本の日記</a></h1>
+    {% for post in posts %}
         <div>
-            <p>published: 20.07.2020, 12:51</p>
-            <h2><a href="">My first post</a></h2>
-            <p>hi!
+            <p>published: {{ post.published_date }}</p>
+            <h2><a href="">{{ post.title }}</a><h2>
+            <p>{{ post.text|linebreaksbr }}</p>    
         </div>
+    {% endfor %}
     </body>
 </html>
