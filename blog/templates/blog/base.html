@@ -1,24 +1,55 @@
 {% load static %}
 <html>
     <head>
-        <title>山本の日記</title>
+        <title>Q&Aサイト(仮)</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
         <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
     </head>
     <body>
+        <nav class="navbar navbar-light bg-dark iro " style="background-color:#000000;">
+            <img src="{% static './image/img.png' %}" width="40" height="40" class = "mgr-top">
+            <a href="http://www.aiskk.co.jp/" class="navbar-brand" style="color:#ffffff">旭情報サービス株式会社</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="top-menu "><span class="glyphicon glyphicon-log-out"></span></a>
+                <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                
+                {# <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p> #}
+
+                {% else %}
+                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+                {% endif %}
+        </nav>
+        
+
         <div class="page-header">
-        {% if user.is_authenticated %}
-            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-        {% endif %}
-            <h1><a href="/">Yamamoto's Diary</a></h1>
+
+            <!-- <nav class="navbar fixed-top navbar-light bg-dark" style="background-color:#ffffff;">
+                <a href="http://www.aiskk.co.jp/" class="navbar-brand">旭情報サービス株式会社</a>
+            </nav> --> 
+
+            <!--{% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="top-menu "><span class="glyphicon glyphicon-log-out"></span></a>
+                <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                
+                {# <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p> #}
+
+            {% else %}
+                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+            {% endif %} -->
+        
+            <h1><a href="/">インターンシップ用Q&Aサイト</a></h1>
         </div>
         <div class="content container">
-            <div class="row">
+            <div class="row justify-content-start">
                 <div class="col-md-8">
-                {% block content %}
-                {% endblock %}
+                    <div class="container-fluid">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
                 </div>
             </div>
         </div>
