@@ -1,6 +1,15 @@
 from django.contrib.auth.decorators import login_required
+<<<<<<< HEAD
 from django.utils import timezone
 from django.shortcuts import render, redirect, get_object_or_404
+=======
+from django.shortcuts import render
+from .models import Post
+from django.utils import timezone
+from django.shortcuts import render, get_object_or_404
+from .forms import PostForm
+from django.shortcuts import redirect
+>>>>>>> 8251ca5b0941d20b05412c3ce9f328b691f77fbe
 from .forms import PostForm, CommentForm
 from .models import Post, Comment
 
@@ -24,7 +33,10 @@ def post_new(request):
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8251ca5b0941d20b05412c3ce9f328b691f77fbe
 @login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -39,18 +51,27 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8251ca5b0941d20b05412c3ce9f328b691f77fbe
 @login_required
 def post_draft_list(request):
     posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
     return render(request, 'blog/post_draft_list.html', {'posts': posts})
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8251ca5b0941d20b05412c3ce9f328b691f77fbe
 @login_required
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
     return redirect('post_detail', pk=pk)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8251ca5b0941d20b05412c3ce9f328b691f77fbe
 @login_required
 def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -64,12 +85,19 @@ def add_comment_to_post(request, pk):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.post = post
+<<<<<<< HEAD
             comment.save()           
+=======
+            comment.save()
+>>>>>>> 8251ca5b0941d20b05412c3ce9f328b691f77fbe
             return redirect('post_detail', pk=post.pk)
     else:
         form = CommentForm()
     return render(request, 'blog/add_comment_to_post.html', {'form': form})
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8251ca5b0941d20b05412c3ce9f328b691f77fbe
 @login_required
 def comment_approve(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
@@ -80,4 +108,8 @@ def comment_approve(request, pk):
 def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
+<<<<<<< HEAD
     return redirect('post_detail', pk=comment.post.pk)
+=======
+    return redirect('post_detail', pk=comment.post.pk)
+>>>>>>> 8251ca5b0941d20b05412c3ce9f328b691f77fbe

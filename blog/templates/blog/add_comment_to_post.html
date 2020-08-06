@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+<<<<<<< HEAD
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -20,3 +21,13 @@
   </div>
 </div>
 {% endblock %}
+=======
+
+{% block content %}
+    <h1>コメント</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">送信</button>
+    </form>
+{% endblock %}
+>>>>>>> 8251ca5b0941d20b05412c3ce9f328b691f77fbe

@@ -29,4 +29,8 @@ class Comment(models.Model):
         self.approved_comment = True
         self.save()
     def __str__(self):
+<<<<<<< HEAD
         return self.text
+=======
+        return self.text
+>>>>>>> 8251ca5b0941d20b05412c3ce9f328b691f77fbe

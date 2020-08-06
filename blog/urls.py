@@ -11,5 +11,10 @@ urlpatterns = [
     path('post/<pk>/remove/', views.post_remove, name='post_remove'),
     path('post/<int:pk>/comment/', views.add_comment_to_post, name='add_comment_to_post'),
     path('comment/<int:pk>/approve/', views.comment_approve, name='comment_approve'),
+<<<<<<< HEAD
     path('comment/<int:pk>/remove/', views.comment_remove, name='comment_remove'),
 ]
+=======
+path('comment/<int:pk>/remove/', views.comment_remove, name='comment_remove'),
+]
+>>>>>>> 8251ca5b0941d20b05412c3ce9f328b691f77fbe
