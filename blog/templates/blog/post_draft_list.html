@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<section class="cid-s6zKgygF9t" id="social-buttons2-f">
+  <div class="media-container-row">
+    <div class="col-md-8 align-center">
+      <h2 class="pb-3 mbr-fonts-style display-2">下書き</h2>
+    </div>
+  </div>
+</section>
+
+{% for post in posts %}
+<div class="d-flex justify-content-center">
+  <div class="my-box w-75">
+    <div class="post">
+      <p class="date">作った日: {{ post.created_date|date:'Y-m-d' }}</p>
+      <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+      <p>{{ post.text|truncatechars:200 }}</p>
+    </div>
+  </div>
+</div>
+{% empty %}
+<div class="d-flex justify-content-center">
+  <div class="my-box w-75">
+    <div class="post text-center">
+      <h5>下書きが存在しません。</h5>
+      <br><p><a href="{% url 'post_new' %}">投稿する</a></p>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+
+{% endblock %}

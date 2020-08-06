@@ -1,9 +1,22 @@
 {% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-    <h2>New post</h2>
+
+<section class="cid-s6zKgygF9t" id="social-buttons2-f">
+  <div class="media-container-row">
+    <div class="col-md-8 align-center">
+      <h2 class="pb-3 mbr-fonts-style display-2">投稿</h2>
+    </div>
+  </div>
+</section>
+
+<div class="d-flex justify-content-center">
+  <div class="my-box w-75">
     <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
+      {{ form|crispy }}
+      <button type="submit" class="save btn btn-primary btn-sm">投稿</button>
     </form>
+  </div>
+</div>
 {% endblock %}
